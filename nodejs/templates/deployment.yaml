@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}-nodejs
+ 
+spec:
+  selector:
+    matchLabels:
+       run: {{ template "fullname" . }}-nodejs       
+#  replicas: {{ .Values.nodeapp.replicaCount }}
+  template: 
+    metadata:
+      labels:
+         run: {{ template "fullname" . }}-nodejs
+    spec:
+      containers:
+        - name: {{ template "fullname" . }}-nodejs
+          image: {{ .Values.nodeapp.repository }}
+          env:
+          - name: MONGO_URL
+            value: mongodb://mongo:27017/dev
+          imagePullPolicy: {{ .Values.nodeapp.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.nodeapp.internalPort }}

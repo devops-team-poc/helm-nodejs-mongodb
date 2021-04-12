@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}-mongo
+
+spec:
+  selector:
+    matchLabels:
+       run: {{ template "fullname" . }}-mongo
+  template:
+    metadata:
+      labels:
+         run: {{ template "fullname" . }}-mongo
+    spec:
+      containers:
+        - name: {{ template "fullname" . }}-mongo
+          image: {{ .Values.mongo.Image }}
+          ports:
+            - containerPort: {{ .Values.mongo.port }} #2701
+          volumeMounts:
+            - name: {{ .Values.mongo.storageName }}
+              mountPath: /data/db
+
+      volumes:
+        - name: {{ .Values.mongo.storageName }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.mongo.pvc }}    
+    

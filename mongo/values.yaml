@@ -1,0 +1,8 @@
+mongo:
+  Image: mongo:3.6.17-xenial
+  storageClassName: slow
+  storageName: mongo-persistent-storage
+  serviceName: mongo
+  port: 27017
+  pvc: my-pvc
+  pv: my-pv
