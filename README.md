@@ -1,6 +1,4 @@
 # helm-nodejs-mongodb
-
-
 MongoDB
 1)  Create a disk file of 10GB named my-data-disk.
  #gcloud compute disks create --size=10GB  --zone=us-central1-c    my-data-disk
@@ -12,7 +10,6 @@ MongoDB
 7) Define the name of PVC under persistentVolumeClaim inside volumes section.
 8) Now define the service.yaml for mongodb , the labels and selector of it should match with the labels and selector of deployment.yaml of mongodb.
 9) Now values.yaml file should be defined, inside which all the values of diferrent keys will be defined.
-
 NodeJs
 10) Create deployment.yaml file for Nodejs.
 11) Create service.yaml file for Nodejs. Type should be loadBalancer and internal port(targetPort) will be 3000 and external port(port) will be 80.
