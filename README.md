@@ -30,6 +30,6 @@ NodeJs
 	  # kubectl get po,pv,pvc,svc
 21) Hit the endpoint or external IP of loadBalancer in web browser to check the proper running of application.
 22) To uninstall the above deployment, run following.
-	  # helm uninstall node
+	  helm uninstall node
 			or
- 	  # helm del node
+ 	  helm del node
